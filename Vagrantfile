@@ -19,8 +19,9 @@ Vagrant.configure("2") do |config|
     #config.vm.network :forwarded_port, guest: 1935, host: 1935, auto_correct: true
 
     # share project folders
+    share_type = Vagrant::Util::Platform.windows? ? "smb" : "nfs"
+    config.vm.synced_folder "..", "/var/www/project", type: share_type
     config.vm.synced_folder ".", "/vagrant"
-    config.vm.synced_folder "..", "/var/www/project", type: "nfs"
 
     # If true, then any SSH connections made will enable agent forwarding.
     config.ssh.forward_agent = true
@@ -33,7 +34,8 @@ Vagrant.configure("2") do |config|
     end
 
     # Provisioning using shell scripting
-    config.vm.provision :shell, :path => "provision/provision.sh"
-    config.vm.provision :shell, :path => "provision/project.sh", privileged: false
+    config.vm.provision :shell, :path => "provision/root.sh"
+    config.vm.provision :shell, :path => "provision/user.sh", privileged: false
+    config.vm.provision :shell, :path => "project_config.sh", privileged: false
 
 end

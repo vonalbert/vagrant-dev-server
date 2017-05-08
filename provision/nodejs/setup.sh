@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# https://github.com/creationix/nvm
-if [[ ! -e  /.nvm ]]; then
- curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+if [[ ! -e  ~/.nvm ]]; then
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash > /dev/null 2>&1
 
- # Reload bash file to make nvm available
- source /.bashrc
- # source /.nvm/nvm.sh
-
- nvm install 6
- nvm use 6
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
-npm install --global gulp-cli
+nvm install 6 > /dev/null 2>&1
+nvm use 6 > /dev/null 2>&1
+npm install --global gulp-cli > /dev/null 2>&1
