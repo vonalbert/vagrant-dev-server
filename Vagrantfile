@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
 
-    config.vm.box = "ubuntu/xenial64"
-    #config.vm.box = "bento/ubuntu-16.04"
+    #config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "bento/ubuntu-16.04"
 
     # config.vm.hostname "app.dev"
     config.vm.network "private_network", :ip => "192.168.50.50"
@@ -33,11 +33,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Provisioning using shell scripting
-    config.vm.provision :shell, :path => "services/common.sh"
-    config.vm.provision :shell, :path => "services/apache-php.sh"
-    config.vm.provision :shell, :path => "services/composer.sh"
-    config.vm.provision :shell, :path => "services/mysql.sh"
-    config.vm.provision :shell, :path => "services/postgresql.sh"
-    config.vm.provision :shell, :path => "setup.sh", privileged: false
+    config.vm.provision :shell, :path => "provision/provision.sh"
+    config.vm.provision :shell, :path => "provision/project.sh", privileged: false
 
 end

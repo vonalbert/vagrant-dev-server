@@ -4,9 +4,6 @@
 # Project dependant configuration
 # ---------------------------------------------------
 
-# Login as www-data user
-sudo su www-data
-
 # Move to project dir
 cd /project
 

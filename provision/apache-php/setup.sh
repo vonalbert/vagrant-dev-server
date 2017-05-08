@@ -29,8 +29,8 @@ echo "--- PHP installed ---"
 sudo apt-get install -y apache2 > /dev/null
 sudo apt-get install -y libapache2-mod-php7.0 > /dev/null
 
-cp /vagrant/config/vhost.conf /etc/apache2/sites-available/000-default.conf
-cp /vagrant/config/envvars /etc/apache2/envvars
+cp /vagrant/provision/apache-php/vhost.conf /etc/apache2/sites-available/000-default.conf
+cp /vagrant/provision/apache-php/envvars /etc/apache2/envvars
 
 sudo service apache2 restart
 
